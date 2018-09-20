@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<table>
+{% if teams%}
+{% for team in teams%}
+<tr>
+<th>{{team.name}}</th>
+<td>{{team.points}}</td>
+</tr>
+{% endfor %}
+{% else %}
+<h1> There are no teams :(</h1>
+{% endif %}
+</table>
+
+</body>
+</html>
+
