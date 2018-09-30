@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -18,7 +18,7 @@ def connect_to_db(app, db_name):
 
 class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
     date_created = db.Column(db.DateTime, server_default=db.func.now())
     date_updated = db.Column(db.DateTime, server_default=db.func.now(),
         server_onupdate=db.func.now())
@@ -40,6 +40,6 @@ class Point(db.Model):
     date_created = db.Column(db.DateTime, server_default=db.func.now())
 
 if __name__ == '__main__':
-    from server import app
+    app = Flask(__name__)
     connect_to_db(app, 'teampoints')
     db.create_all()

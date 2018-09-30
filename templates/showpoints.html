@@ -10,7 +10,7 @@
 {% for team in teams%}
 <tr>
 <th>{{team.name}}</th>
-<td>{{team.points}}</td>
+<td>{{team.total_points|length}}</td>
 </tr>
 {% endfor %}
 {% else %}
